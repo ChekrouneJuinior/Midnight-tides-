@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malazan Book of the Fallen - Chapter Excerpt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;700&family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Font Display Strategy */
+        @font-face {
+            font-family: 'Amiri';
+            font-display: swap;
+        }
+
+        /* Variables & Theming */
+        :root {
+            /* Default Cream Theme */
+            --bg: #f5f0e8;
+            --text: #3d3427;
+            --accent: #c9a84c;
+            --panel-bg: #ebe5d9;
+            --nav-bg: #f5f0e8;
+            --title-color: #2c2c2c;
+            --selection-bg: #c9a84c44;
+            --border-subtle: #d4c9b0;
+            --shadow-subtle: rgba(0,0,0,0.06);
+            --tooltip-bg: #3d3427ee;
+            --tooltip-text: #f5f0e8;
+
+            /* Dynamic Settings */
+            --font-family: 'Amiri', serif;
+            --font-size: 20px;
+            --line-height: 2.0;
+        }
+
+        body[data-theme="white"] {
+            --bg: #ffffff;
+            --text: #2c2c2c;
+            --accent: #8a7e6b;
+            --panel-bg: #f5f5f5;
+            --nav-bg: #ffffff;
+            --title-color: #111111;
+            --selection-bg: #8a7e6b44;
+            --border-subtle: #e0e0e0;
+            --tooltip-bg: #2c2c2cee;
+            --tooltip-text: #ffffff;
+        }
+
+        body[data-theme="dark"] {
+            --bg: #1e1e1e;
+            --text: #cfc9be;
+            --accent: #c9a84c;
+            --panel-bg: #2a2a2a;
+            --nav-bg: #1e1e1e;
+            --title-color: #ffffff;
+            --selection-bg: #c9a84c44;
+            --border-subtle: #444444;
+            --tooltip-bg: #f5f0e8ee;
+            --tooltip-text: #3d3427;
+        }
+
+        body[data-theme="amoled"] {
+            --bg: #000000;
+            --text: #dedbd4;
+            --accent: #c9a84c;
+            --panel-bg: #0d0d0d;
+            --nav-bg: #000000;
+            --title-color: #ffffff;
+            --selection-bg: #c9a84c44;
+            --border-subtle: #222222;
+            --tooltip-bg: #f5f0e8ee;
+            --tooltip-text: #3d3427;
+        }
+
+        /* Reset & Base */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font-family);
+            font-size: var(--font-size);
+            line-height: var(--line-height);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            direction: rtl;
+            overflow-x: hidden;
+            scrollbar-width: thin;
+            scrollbar-color: #c9a84c55 transparent;
+        }
+
+        ::selection {
+            background: var(--selection-bg);
+            color: inherit;
+        }
+
+        /* Webkit Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c9a84c55;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c9a84c88;
+        }
+
+        /* Layout */
+        .page-wrapper {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 30px 40px 100px 40px;
+        }
+
+        @media (max-width: 1024px) {
+            .page-wrapper { width: 90%; padding: 30px 30px 100px 30px; }
+        }
+        @media (max-width: 768px) {
+            .page-wrapper { width: 95%; padding: 20px 20px 80px 20px; }
+        }
+
+        /* Progress Bar */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--accent);
+            width: 0%;
+            z-index: 200;
+            transition: width 0.1s ease-out;
+        }
+
+        /* Navigation */
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: var(--nav-bg);
+            padding: 16px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-square {
+            width: 18px;
+            height: 18px;
+            background-color: var(--accent);
+            border-radius: 3px;
+        }
+        .nav-title {
+            color: #5c4a2f;
+            font-size: 14px;
+            font-weight: 400;
+            font-family: 'Amiri', serif;
+        }
+        [data-theme="dark"] .nav-title, [data-theme="amoled"] .nav-title { color: #a39581; }
+        
+        .nav-settings {
+            cursor: pointer;
+            color: #b8a88a;
+            width: 28px;
+            height: 28px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .nav-settings:hover {
+            transform: rotate(45deg);
+        }
+
+        /* Chapter Header */
+        .chapter-header {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .chapter-label {
+            color: var(--accent);
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            font-family: 'Amiri', serif;
+        }
+        .chapter-title {
+            color: var(--title-color);
+            font-size: 36px;
+            font-weight: 700;
+            font-family: 'Amiri', serif;
+            margin: 12px 0;
+        }
+        @media (max-width: 768px) { .chapter-title { font-size: 28px; } }
+        
+        .chapter-diamond {
+            color: var(--accent);
+            font-size: 10px;
+            margin: 20px 0;
+        }
+        .chapter-hr {
+            border: none;
+            height: 1px;
+            background-color: var(--border-subtle);
+            width: 80%;
+            margin: 0 auto 40px auto;
+        }
+
+        /* Content */
+        .content {
+            text-align: justify;
+            word-spacing: 2px;
+        }
+        .content p {
+            margin-bottom: 28px;
+            margin-top: 0;
+        }
+        .divider {
+            text-align: center;
+            color: var(--accent);
+            font-size: 8px;
+            letter-spacing: 12px;
+            margin: 36px 0;
+        }
+
+        /* Tooltips Styling */
+        .tt {
+            cursor: help;
+            position: relative;
+            transition: text-decoration-color 0.2s ease;
+        }
+        .tt:hover {
+            text-decoration-color: currentColor !important; /* Forces slight opacity increase by reverting to full color if needed, but keeping exact colors is safer. Let's adjust via JS if needed, or just let CSS handle base. */
+        }
+        .tt-name { text-decoration: underline dotted #5b8fb9aa; text-decoration-thickness: 1.5px; text-underline-offset: 5px; }
+        .tt-name:hover { text-decoration-color: #5b8fb9ff; }
+        .tt-lore { text-decoration: underline dashed #c9a84caa; text-decoration-thickness: 1.5px; text-underline-offset: 5px; }
+        .tt-lore:hover { text-decoration-color: #c9a84cff; }
+        .tt-phil { text-decoration: underline solid #7a9a6daa; text-decoration-thickness: 1.5px; text-underline-offset: 5px; }
+        .tt-phil:hover { text-decoration-color: #7a9a6dff; }
+
+        /* Toggles states */
+        body.hide-name .tt-name, body.hide-lore .tt-lore, body.hide-phil .tt-phil {
+            text-decoration: none;
+            pointer-events: none;
+        }
+
+        /* Global Dynamic Tooltip */
+        #global-tooltip {
+            position: absolute;
+            z-index: 500;
+            background: var(--tooltip-bg);
+            color: var(--tooltip-text);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: 'Inter', system-ui, sans-serif;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(4px);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        #global-tooltip.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        #global-tooltip::after {
+            content: '';
+            position: absolute;
+            border-style: solid;
+            border-width: 6px;
+            border-color: transparent;
+        }
+        #global-tooltip.pos-top::after {
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-top-color: var(--tooltip-bg);
+        }
+        #global-tooltip.pos-bottom::after {
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-bottom-color: var(--tooltip-bg);
+        }
+        
+        #global-tooltip.type-lore, #global-tooltip.type-phil {
+            font-family: 'Amiri', serif;
+            max-width: 360px;
+            white-space: normal;
+            line-height: 1.6;
+        }
+        #global-tooltip.type-lore { border-top: 3px solid #c9a84c; }
+        #global-tooltip.type-phil { border-top: 3px solid #7a9a6d; }
+        #global-tooltip.type-name { white-space: nowrap; }
+
+        .tt-close-btn {
+            display: none;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 24px;
+            height: 24px;
+            background: var(--tooltip-bg);
+            color: var(--tooltip-text);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 22px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 1px solid var(--border-subtle);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        @media (max-width: 768px) { .tt-close-btn { display: block; } }
+
+        /* Scroll to Top */
+        #scroll-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            color: #ffffff;
+            border: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            cursor: pointer;
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.9);
+            transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 150;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #scroll-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: scale(1);
+        }
+        #scroll-top:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        #scroll-top svg { width: 20px; height: 20px; fill: currentColor; }
+
+        /* Settings Panel */
+        #settings-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.15);
+            z-index: 299;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        #settings-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #settings-panel {
+            position: fixed;
+            top: 0; left: 0;
+            width: 300px;
+            height: 100vh;
+            background-color: var(--panel-bg);
+            z-index: 300;
+            box-shadow: 2px 0 20px var(--shadow-subtle);
+            transform: translateX(-100%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 30px;
+            overflow-y: auto;
+            direction: rtl;
+        }
+        #settings-panel.show { transform: translateX(0); }
+        @media (max-width: 768px) {
+            #settings-panel { width: 100%; transform: translateX(-100%); }
+        }
+
+        .settings-section { margin-bottom: 24px; }
+        .settings-label {
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            font-family: system-ui, sans-serif;
+        }
+        .settings-divider {
+            height: 1px;
+            background-color: #d4c9b044;
+            margin: 24px 0;
+            border: none;
+        }
+
+        /* Font Buttons */
+        .font-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .font-btn {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 10px 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 16px;
+        }
+        .font-btn:hover { border-color: var(--accent); }
+        .font-btn.active {
+            background: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+        }
+
+        /* Sliders */
+        .slider-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .slider-val {
+            color: var(--text);
+            font-size: 16px;
+            font-family: 'Amiri', serif;
+            min-width: 24px;
+        }
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]:focus { outline: none; }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            background: var(--border-subtle);
+            border-radius: 2px;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 2px solid #ffffff;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+            margin-top: -6px;
+            cursor: pointer;
+        }
+        input[type=range]::-moz-range-track {
+            width: 100%;
+            height: 4px;
+            background: var(--border-subtle);
+            border-radius: 2px;
+        }
+        input[type=range]::-moz-range-thumb {
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 2px solid #ffffff;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+            cursor: pointer;
+        }
+
+        /* Theme Swatches */
+        .theme-row {
+            display: flex;
+            gap: 14px;
+        }
+        .swatch {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 2px solid #d4c9b044;
+            cursor: pointer;
+            transition: transform 0.2s ease, outline 0.2s ease;
+        }
+        .swatch:hover { transform: scale(1.1); }
+        .swatch.active {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        /* Toggles */
+        .toggle-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            color: var(--text);
+            font-family: 'Amiri', serif;
+            font-size: 16px;
+        }
+        .toggle-switch {
+            position: relative;
+            width: 30px;
+            height: 16px;
+            background-color: var(--accent);
+            border-radius: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .toggle-switch.off { background-color: var(--border-subtle); }
+        .toggle-thumb {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 12px;
+            height: 12px;
+            background-color: #fff;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+        /* RTL: switch is "on" when thumb is on the left (if we consider left as start), but let's just slide it. 
+           Let's say off = right, on = left. Width 30, thumb 12, padding 2. 30 - 12 - 4 = 14px slide */
+        .toggle-switch:not(.off) .toggle-thumb {
+            transform: translateX(14px);
+        }
+
+        /* Toast */
+        #toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: var(--tooltip-bg);
+            color: var(--tooltip-text);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-family: 'Amiri', serif;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s, transform 0.3s;
+            z-index: 1000;
+        }
+        #toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { transition: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="progress-bar"></div>
+
+    <nav class="top-nav page-wrapper" style="padding-top:16px; padding-bottom:16px;">
+        <svg class="nav-settings" id="btn-settings" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.06-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.73,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.06,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.43-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.49-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
+        </svg>
+        <div class="nav-right">
+            <span class="nav-title">مالازان: كتاب السقوط</span>
+            <div class="nav-square"></div>
+        </div>
+    </nav>
+
+    <div class="page-wrapper" style="padding-top:0;">
+        <div class="chapter-header">
+            <div class="chapter-label">الفصل</div>
+            <div class="chapter-title">رؤيا الأزات</div>
+            <div class="chapter-diamond">◆</div>
+            <hr class="chapter-hr">
+        </div>
+
+        <div class="content" id="reading-content">
+            <p>بَعدَ استِدعائِهِ لِلانضِمامِ إلى <span class="tt tt-lore" data-tt="أعلى رتبة سحرية في إمبراطورية ليذر، وهو المستشار السحري الشخصي للملك. (Ceda)">سيدا</span> في <span class="tt tt-lore" data-tt="غرفة قراءة البلاطات السحرية الخاصة بالسيدا، حيث يتجسد السحر القديم المعروف بالمقامات. (Cedance)">سيدانس</span>، وهي غُرفةُ البَلاطات، هَبَطَ <span class="tt tt-name" data-tt="Brys Beddict">بريس</span> الدَّرَجاتِ الأخيرَةَ إلى المَنصَّةِ وشَقَّ طَرِيقَهُ نَحوَ المَمَرِّ المُرْتَفِع. كانَ <span class="tt tt-name" data-tt="Kuru Qan">كورو كان</span> يَدورُ حَولَ المِنَصَّةِ البَعِيدَةِ بِطَرِيقَةٍ مُشَتَّتَة، وهو يُتَمْتِمُ بِصَوتٍ خافِت.</p>
+            <p>«<span class="tt tt-lore" data-tt="أعلى رتبة سحرية في إمبراطورية ليذر. (Ceda)">سيدا</span>،» نادى <span class="tt tt-name" data-tt="Brys Beddict">بريس</span> وهو يَقترِب. «هل أرَدتَ رؤيَتي؟»</p>
+            <p>«أمرٌ بَغِيضٌ يا <span class="tt tt-lore" data-tt="رتبة عسكرية رفيعة في جيش إمبراطورية ليذر، تعادل القائد أو الجنرال. (Finadd)">فيناد</span> [قائِد عَسْكَري]، كُلُّهُ بَغِيضٌ لِلغاية. إنَّهُ يَعجِزُ عَنِ الفَهم. أحتاجُ إلى عَقلٍ أكثرَ صَفاوَة؛ بِعِبارَةٍ أخرى، لَيسَ عَقلي. رُبَّما عَقْلُك. تَعالَ هُنا. استَمِع.»</p>
+            <p>لَم يَسبِق لِـ <span class="tt tt-name" data-tt="Brys Beddict">بريس</span> أن سَمِعَ <span class="tt tt-lore" data-tt="أعلى رتبة سحرية في إمبراطورية ليذر. (Ceda)">سيدا</span> يَتَحَدَّثُ بِهذا القَدْرِ مِنَ الفَزَعِ والمَشَقَّة. «ماذا حَدَث؟»</p>
+            <p>«كُلُّ <span class="tt tt-lore" data-tt="نظام سحري قديم وبدائي يسبق نظام الخنادق (Warrens)، يعتمد عليه السحر في قارة ليذر. (Hold)">هولد</span> [المَقَام] يا <span class="tt tt-lore" data-tt="رتبة عسكرية رفيعة. (Finadd)">فيناد</span>. فَوْضَى عارِمَة. لَقَد شَهِدتُ تَحَوُّلاً. انظُر، انظُر بِنَفسِك. بَلاطَةُ <span class="tt tt-lore" data-tt="نقاط ارتكاز مركزية في سحر المقامات، تمثل توازن القوى الكونية. (Fulcra)">فولكرا</span> [مَحاوِر الارتِكاز]، هُناكَ "<span class="tt tt-lore" data-tt="نصب حجري يمثل عقداً سحرية بدائية تستخدم لتقييد القوى. (Dolmen)">دولمين</span>" [النَّصَبُ الحَجَري]. هل تَرى؟ شَخْصٌ جَاثِمٌ عِندَ قاعِدَتِه. مُقَيَّدٌ بَسلاسِلَ إلى "<span class="tt tt-lore" data-tt="أعمدة حجرية عملاقة تشكل جزءاً من بنية السحر البدائي. (Menhir)">مينهير</span>" [العَمُود الصَّخْرِي]. كُلُّ شَيءٍ مَحجُوبٌ بِالدُّخان، دُخانٌ يُخَدِّرُ عَقلي. لَقَد استُولِيَ على "<span class="tt tt-lore" data-tt="نصب حجري يمثل عقداً سحرية بدائية. (Dolmen)">دولمين</span>".»</p>
+            <p>حَدَّقَ <span class="tt tt-name" data-tt="Brys Beddict">بريس</span> في البَلاطَة. كانَ الشَّكْلُ شَبَحِيَّاً، وبَدَت رُؤيَتُهُ تَغْتَشُّ كُلَّما أطالَ النَّظَر. «مَن فَعَلَ هَذا؟»</p>
+            <p>«غَرِيب. دَخِيل.»</p>
+            <p>«إلَه؟»</p>
+            <p>دَلَّكَ <span class="tt tt-name" data-tt="Kuru Qan">كورو كان</span> جَبينَهُ المُغَضَّنَ بِأصابِعِهِ وهو يُواصِلُ السَّير. «نَعَم. لا. <span class="tt tt-phil" data-tt="يعكس هذا المقطع نظرة عالم مالازان الفلسفية للآلهة؛ فهم ليسوا خالقين مطلقين، بل كيانات تتشكل وتستمد قوتها من إيمان البشر ورغباتهم ومخاوفهم، مما يجعلهم عرضة للضعف.">نَحنُ لا نُقِيمُ وَزناً لِفِكرَةِ الآلِهَة. إنَّهُم مُجَرَّدُ طارِئِينَ لا يُساوي شَيئاً مُقارَنَةً بِالـ مَقامات. مُعظَمُهُم لَيسوا حَقِيقيِّينَ أصلاً، بَل هُم مُجَرَّدُ تَجَلِّياتٍ لِرَغباتِ الشُّعوبِ وآمالِها. ومَخاوِفِها.</span> وبِالطَّبْع،» أضافَ، «أحياناً هذا كُلُّ ما يَلزَم.»</p>
+            <p>«ماذا تَقصد؟»</p>
+            <p>هَزَّ <span class="tt tt-name" data-tt="Kuru Qan">كورو كان</span> رَأسَه. «و<span class="tt tt-lore" data-tt="قوة كونية غامضة تتجلى على شكل بيوت حية تقوم بابتلاع وحبس الكيانات والآلهة التي تهدد نسيج الوجود. (Azath Hold)">هولد الأزات</span>، هذا يُقْلِقُني بِشِدَّة. البَلاطَةُ المَركَزِيَّة، <span class="tt tt-lore" data-tt="المركز النابض أو نواة بيت الأزات، والذي من خلاله يتحكم البيت في طاقاته وسجنائه. (Heartstone)">هارتستون</span> [حَجَرُ القَلب]، هل تَشعُرُ بِها؟ لَقَد مَاتَ "<span class="tt tt-lore" data-tt="نواة بيت الأزات. (Heartstone)">هارتستون</span>" <span class="tt tt-lore" data-tt="البيوت الكونية التي تحفظ التوازن السحري. (Azath)">الأزات</span> يا صَدِيقي. تَجَمَّعَتِ البَلاطاتُ الأخرى حَولَهُ في النِّهايَة، مُنْكَمِشَةً على بَعضِها مِثْلَما يَتَجَمَّعُ الدَّمُ في جَسَدٍ جَرِيح. لَقَد اختُرِقَ المَدْفَن، وباتَت <span class="tt tt-lore" data-tt="عنصر سحري يمثل العبور بين العوالم أو المقامات.">البَوابةُ</span> بِلا حِراسَة. يَجِبُ أن تَقومَ بِرِحلَةٍ لِأَجْلي إلى البُرجِ المُرَبَّع يا <span class="tt tt-lore" data-tt="رتبة عسكرية رفيعة. (Finadd)">فيناد</span>. واذهَبْ مُتَسَلِّحاً.»</p>
+            <p>«عَمَّن يَجِبُ أن أبحَث؟»</p>
+            <p>«أيُّ شَيءٍ غَيرِ طَبِيعي. أرضٌ مُتَصَدِّعَة. ولَكِن كُن حَذِراً؛ فالسُّكَّانُ القابِعونَ في تِلكَ المَدافِنِ لَيسوا مَوْتى.»</p>
+            <p>«حَسَناً.» تَفَحَّصَ <span class="tt tt-name" data-tt="Brys Beddict">بريس</span> أقْرَبَ <span class="tt tt-lore" data-tt="ألواح سحرية تُستخدم في ليذر للتنبؤ بالمستقبل وقراءة المقامات.">البَلاطات</span>. «هل هُناكَ المَزيد؟»</p>
+            <p>تَوَقَّفَ <span class="tt tt-name" data-tt="Kuru Qan">كورو كان</span>، وارتَفَعَ حاجِباه. «المَزيد؟ لَقَد استَيْقَظَ <span class="tt tt-lore" data-tt="أحد المقامات القديمة المرتبطة بالتنانين والفوضى البدائية.">مَقامُ التِّنِّين</span>. <span class="tt tt-lore" data-tt="كائنات مجنحة مرعبة تنحدر من سلالة التنانين (الآلينت)، وتعتبر نسخاً أصغر وأكثر وحشية. (Wyval)">وايفال</span> [أشْباهُ التَّنانِين]. <span class="tt tt-lore" data-tt="كيان أو قوة مرتبطة بالمقامات، ترمز إلى العنف والقرابين.">شارِبُ الدِّماء</span>. <span class="tt tt-lore" data-tt="عنصر سحري يمثل العبور بين العوالم.">البَوابة</span>. <span class="tt tt-lore" data-tt="دور ضمن نظام المقامات، يمثل الشريك أو الداعم للقوة الحاكمة.">القَرِين</span>. ومِن بَينِ "محاور الارتِكاز"، اتَّخَذَ "<span class="tt tt-lore" data-tt="إله قديم يرتبط بمقام 'العرش الخالي'. يمثل الصدفة وتغير المصائر، ويتلاعب بالأحداث. (Errant)">إيرانت</span>" [التَّائِه] مَوقِعَهُ الآن في مَركَزِ الأمور. "<span class="tt tt-lore" data-tt="مجموعة الكيانات التابعة لمقام ما.">القَطِيع</span>" يَقتَرِب، و"كاشِفُ الهَيْئة" أصْبَحَ "<span class="tt tt-lore" data-tt="وحش سحري هجين مرعب يتشكل من دمج عدة كائنات معاً. (Chimera)">كيميرا</span>" [وَحشاً مُهَجَّناً]. أمَّا "<span class="tt tt-lore" data-tt="كيان مرتبط بمقام الجليد البدائي، وهي تشير هنا إلى الجاغوت التي تصطاد الشياطين.">صَيّادَةُ</span>" مَقامِ الجَلِيد، فَهِيَ تَسْلُكُ مَسالِكَ مُتَجَمِّدَة. "<span class="tt tt-lore" data-tt="بطاقة أو رمز يمثل البراءة المهددة أو التجديد في قراءة المقامات.">الطِّفْل</span>" و"<span class="tt tt-lore" data-tt="رمز يمثل البدايات الجديدة أو الخطر الكامن.">البَذْرَة</span>" يَدُبُّ فِيهِما النَّشاط. و<span class="tt tt-lore" data-tt="مقام سحري غامض وغير مستقر، مرتبط بالإله 'الإيرانت' والصدفة العمياء.">المَقامُ الخالِي</span> — كَما تَرى بِوُضوح — أصْبَحَ مَحجُوباً. كُلُّ بَلاطَة. هُناكَ ظِلٌّ يَقِفُ خَلْفَ "العَرشِ الخالِي". وانظُر، "المُخَلِّص" و"الخائِن"، لَقَدِ التَحَما. لَقَد أصْبَحا كِياناً واحِداً. كَيفَ يُمكِنُ لِهذا أن يَحدُث؟ "المُتَجَوِّل"، "السَّيِّدة"، "المُراقِب" و"الماشِي"، كُلُّهُم مُخْتَفون، مَحجُوبونَ بِحَرَكَةٍ غامِضَة. أنا خائِفٌ يا <span class="tt tt-lore" data-tt="رتبة عسكرية رفيعة. (Finadd)">فيناد</span>.»</p>
+            <p>«<span class="tt tt-lore" data-tt="أعلى رتبة سحرية في إمبراطورية ليذر. (Ceda)">سيدا</span>، هل سَمِعتَ أنباءً عَنِ الوَفْد؟»</p>
+            <p>«الوَفْد؟ لا. مُنذُ لَحْظَةِ وُصولِهِم إلى قَريةِ <span class="tt tt-lore" data-tt="الحاكم القوي الذي وحد قبائل التيست إيدور المتناحرة، واسمه الحقيقي هانان موساغ. (Warlock King)">وارلوك كينغ</span> [المَلِك السَّاحِر]، انقَطَعَ كُلُّ اتِّصالٍ بِهِم. لَقَد حُجِبَ بـ<span class="tt tt-lore" data-tt="سحر مستمد من خندق الظل (كورالد جالين)، يتميز بقوته التدميرية.">سِحرِ</span> <span class="tt tt-lore" data-tt="التيست إيدور، وهم عرق ذو بشرة رمادية يُعرفون بأبناء الظل. (Edur)">الإيدور</span>، وهو نَوْعٌ لَم نَعْهَدْهُ مِن قَبْل. هُناكَ الكثيرُ مِمَّا يُقْلِق. الكثير.»</p>
+            <p>«يَجِبُ أن أُغادِرَ الآن يا <span class="tt tt-lore" data-tt="أعلى رتبة سحرية. (Ceda)">سيدا</span>، ما دامَ هُناكَ ضَوءٌ بَعْد.»</p>
+            <p>«مُوافِق. ثُمَّ عُد إلى هُنا بِما اكتَشَفْتَه.»</p>
+            <p>«حَسَناً.»</p>
+
+            <div class="divider">◆ ◆ ◆</div>
+
+            <p>صَعِدَ المَسارُ المُؤَدِّي إلى المَحاجِرِ بِشَكْلٍ مُتَعَرِّجٍ نَحوَ فَجْوَةٍ في سَفْحِ التَّل. كانت أشجارُ الغابَةِ الكَثِيفَةِ على الجَوانِبِ مُغَطَّاةً بِغُبارٍ أبْيَض. وبَدَتِ الماعِزُ وهي تَسْعُلُ في الظِّلّ.</p>
+            <p>تَوَقَّفَ <span class="tt tt-name" data-tt="Bugg">باق</span> لِيَمْسَحَ الحَصَى المُتَعَرِّقَ عَن جَبِينِه، ثُمَّ واصَلَ السَّير.</p>
+            <p>مَرَّت بِهِ قَبْلَ وَقتٍ قَصِيرٍ عَرَبَتانِ مَلِيئَتانِ بِقاطِعِي الأحجار، وجاءَتْ مِن رَئيسِ العُمَّالِ المُحْبَطِ أنباءٌ غَيرُ سارَّةٍ تُفيدُ بِأنَّ الطَّاقَمَ رَفَضَ العَمَلَ في المَحْجَرِ بَعْدَ الآن، على الأقَلِّ حتَّى تُحَلَّ المُشْكِلَة.</p>
+            <p>لَقَد فُتِحَتْ فَجْوَةٌ عَن غَيرِ قَصْد، كانَ يَسكُنُها مَخلوقٌ مِن نَوْعٍ ما، لَقَد كانَ سَجِيناً هُناكَ لِما يَجِبُ أن يَكونَ زَمَناً طَويلاً جِدَّاً. لَقَد سُحِبَ ثَلاثَةٌ مِنَ العُمَّالِ إلى الداخِل، ولَم تَدُمْ صَرخاتُهُم طَويلاً. ولَم يَكُن حالُ "<span class="tt tt-lore" data-tt="ساحر متخصص في سحر الموت والتلاعب بالأرواح والجثث. (Necromancer)">النيكرومانسر</span>" [مُستَحْضِر الأرواح] المُسْتَأجَرِ بِأفضَلَ مِنهُم.</p>
+            <p>وَصَلَ <span class="tt tt-name" data-tt="Bugg">باق</span> إلى الفَجْوَةِ ووَقَفَ يَنظُرُ إلى أسفَلَ حُفْرَةِ المَحْجَرِ بِجَوانِبِها الحَجَرِيَّةِ الجِيرِيَّةِ الهَنْدَسِيَّةِ المَحفُورَةِ بَعِيداً في الأرضِ المُحِيطَة. كانَت فَوهَةُ التَّجْويفِ بالكادِ مَرئِيَّةً بِالقُربِ مِن مِنطَقَةٍ شَهِدَت أعمالاً حَدِيثَة.</p>
+            <p>شَقَّ طَرِيقَهُ إلى الأسفَل، واقْتَرَبَ لِمَسافَةِ عِشْرِينَ خُطْوَةً مِنَ الكَهْفِ قَبْلَ أن يَتَوَقَّف.</p>
+            <p>فَجْأةً، أصْبَحَ الهَواءُ قارِساً كالعَلْقَم. وبِتَقْطِيبَةٍ على وَجْهِه، خَطا <span class="tt tt-name" data-tt="Bugg">باق</span> إلى جانِبٍ واحِدٍ وجَلَسَ على كُتْلَةٍ مِنَ الحَجَرِ الجِيرِيّ. راقَبَ الصَّقِيعَ وهو يَتَشَكَّلُ على الأرضِ إلى يَسارِ الكَهْف، مُمْتَدَّاً في نُقْطَةٍ نَحوَ الفَتْحَةِ المُظلِمَة، بَيْنما انْتَشَرَ الطَّرَفُ المُقابِلُ بِشَكْلٍ أوسَعَ في دَوَّامَةٍ مِنَ الضَّباب. دَوى صَوتُ تَحَطُّمِ الجَلِيدِ تَحتَ الأقدام، ثُمَّ ظَهَرَ شَخْصٌ مِنَ الطَّرَفِ المُتَّسِع، وكأنَّهُ خَرَجَ مِنَ العَدَم. قامَةٌ فارِعَة، عارِيَةٌ مِنَ الحَوضِ فما فَوق، بِبَشَرَةٍ رَمادِيَّةٍ مائِلَةٍ لِلخُضْرَة. شَعْرٌ أشْقَرُ طَوِيلٌ ذو خُصُلاتٍ داكِنَةٍ يَنْسَدِلُ بِحُرِّيَّةٍ على كَتِفَيها وظَهْرِها. عَيْنانِ رَمادِيَّتانِ فاتِحَتان، وحَدَقَتاهُما شَقَّانِ رَأْسِيَّان. أنيابٌ مُغَطَّاةٌ بِالفِضَّة. كانت أُنثى، ذاتَ صَدْرٍ مُمْتَلِئ. تَرْتَدي تَنُّورَةً قَصِيرَة، وهي قِطعَةُ مَلابِسِها الوَحِيدَةُ باستِثْناءِ خُفِّ "الموكاسين" المَرْبوطِ بَسُيُورٍ جِلدِيَّة، وحِزامٍ عَريضٍ يَحمِلُ نِصْفَ دَرْزَنَةٍ مِنَ الأغمادِ التي تَسكُنُها خَناجِرُ لِلطَّعْن.</p>
+            <p>كانَ تَرْكِيزُها مُنْصَبَّاً على الكَهْف. وَضَعَت يَدَيها على خَصْرِها وتَنَهَّدَت بِصَوتٍ مَسْموع.</p>
+            <p>«لَن يَخرُج،» قالَ <span class="tt tt-name" data-tt="Bugg">باق</span>.</p>
+            <p>نَظَرَت نَحوَه. «بِالطَّبْع لَن يَفْعَل، ما دُمتُ أنا هُنا.»</p>
+            <p>«أيُّ نَوْعٍ مِنَ الشَّياطِينِ هو؟»</p>
+            <p>«جائِعٌ ومَجنون، ولَكِنَّهُ جَبان.»</p>
+            <p>«هل أنتِ مَن وَضَعَهُ هُناك؟»</p>
+            <p>أومَأَت بِرَأسِها. «تَبَّاً لِلبَشَر. لا يُمكِنُهُم تَرْكُ الأشياءِ وشَأنَها.»</p>
+            <p>«أشُكُّ في أنَّهُم كانوا يَعْلَمون يا <span class="tt tt-lore" data-tt="عرق قديم وقوي جداً يتميز بصلاته العميقة بسحر الجليد. يفضلون العزلة وغالباً ما يُعتبرون تهديداً أسطورياً. (Jaghut)">جاغوت</span>.»</p>
+            <p>«لَيسَ عُذْراً. إنَّهُم يَحفُرونَ دائِماً. يَحفُرونَ هُنا، ويَحفُرونَ هُناك. لا يَتَوَقَّفونَ أبداً.»</p>
+            <p>أومَأَ <span class="tt tt-name" data-tt="Bugg">باق</span> بِرَأسِه، ثُمَّ سأل: «إذاً، ماذا الآن؟»</p>
+            <p>تَنَهَّدَت مَرَّةً أخرى.</p>
+            <p>تَحَوَّلَ الصَّقِيعُ عِندَ قَدَمَيها إلى جَلِيدٍ زاوِيّ، زَحَفَ بَعْدَ ذلِكَ إلى فَوْهَةِ الكَهْف. نَمَا الجَلِيدُ بِسُرعَة، مَالِئاً الحُفْرَة. أنَّ الحَجَرُ المُحِيطُ وصَرَّ، ثُمَّ تَصَدَّعَ، لِيَكشِفَ عَن جَلِيدٍ صَلْبٍ تَحْتَه. انْهالَتِ الأرضُ الرَّملِيَّةُ وقِطَعُ الحَجَرِ الجِيرِيّ.</p>
+            <p>ضاقَت نَظرَةُ <span class="tt tt-name" data-tt="Bugg">باق</span> نَحوَ الشَّكْلِ الغَرِيبِ المَحْبوسِ في مَركَزِ الجَلِيدِ المُتَصاعِدِ مِنهُ البُخار. «<span class="tt tt-lore" data-tt="نوع من الشياطين المرعبة والمجنونة في عالم مالازان، تُعرف بجوعها الذي لا ينتهي وطبيعتها الجبانة. (Khalibaral)">خاليبارال</span>؟ لِيُعِنَّا الـ<span class="tt tt-lore" data-tt="الإله المتلاعب بالصدف والمصائر. (Errant)">إيرانت</span>، أنا سَعيدٌ لأنَّكِ قَرَّرْتِ العَودةَ يا <span class="tt tt-name" data-tt="Huntress">هانتريس</span> [الصَّيادة].»</p>
+            <p>«الآن أحتاجُ إلى العُثُورِ لَهُ على مَكانٍ آخَر. أيُّ اقتِراحات؟»</p>
+            <p>فَكَّرَ <span class="tt tt-name" data-tt="Bugg">باق</span> لِفَترَة، ثُمَّ ابْتَسَم.</p>
+
+            <div class="divider">◆ ◆ ◆</div>
+
+            <p>تَقَدَّمَ <span class="tt tt-name" data-tt="Brys Beddict">بريس</span> بَينَ بَرجيْنِ مُستَدِيرَينِ مُهَدَّمَين، وهو يَخطو بِحَذَرٍ حَولَ كُتَلٍ حَجَرِيَّةٍ مُتَساقِطَةٍ نِصفُ مَخفِيَّةٍ في الأعشابِ الصَّفراءِ القاسِيَة. كانَ الهَواءُ حارَّاً وساكِناً، وضَوءُ الشَّمْسِ كَذَهَبٍ مُنْصَهِرٍ على جُدرانِ البُرج. طارَ الجَرادُ مِن طَرِيقِهِ بِذُعْرٍ طَقْطَقِيّ، وعِندَ الإحساسِ الضَّعِيفِ بِتَحَطُّمِ شَيءٍ تَحتَ قَدَمَيه، نَظَرَ <span class="tt tt-name" data-tt="Brys Beddict">بريس</span> إلى أسفَلَ لِيَرى أنَّ الأرضَ تَعِجُّ بِالحَياة. حَشَراتٌ، الكثيرُ مِنها لا تَعْرِفُها عَيْناه، ضَخْمَةُ الحَجْم، خَرْقاء، بِألوانٍ باهِتَة، تَتَدافعُ إلى كِلا الجانِبَيْنِ بَيْنَما يَمْشِي.</p>
+            <p>وبِما أنَّها كانت تَهْرُبُ جَمِيعُها، لَم يَكُن قَلِقاً بِشَكْلٍ زائِد.</p>
+            <p>ظَهَرَ البُرجُ المُرَبَّعُ أمامَ نَظَرِه. إنَّهُ <span class="tt tt-lore" data-tt="قوة كونية غامضة تتجلى على شكل بيوت حية (منازل الأزات) تقوم بابتلاع الكيانات التي تهدد نسيج الوجود. (Azath)">الأزات</span>. وبِعِيداً عَن طِرازِ مِعمارِهِ البِدائِيّ، بَدا أنَّ هُناكَ القليلَ مِمَّا يُمَيِّزُه. شَعَرَ <span class="tt tt-name" data-tt="Brys Beddict">بريس</span> بِالحَيرَةِ مِن تأكِيدِ <span class="tt tt-lore" data-tt="أعلى رتبة سحرية. (Ceda)">سيدا</span> بِأنَّ هَيْكَلاً مِنَ الحَجَرِ والخَشَبِ يُمكِنُ أن يَكونَ واعِيَاً، أو يُمكِنُ أن يَتَنَفَّسَ بِحَياةٍ خاصَّةٍ بِه. فالبِناءُ يَفْتَرِضُ وُجودَ بَنَّاء، ومَع ذلِكَ زَعَمَ <span class="tt tt-name" data-tt="Kuru Qan">كورو كان</span> أنَّ <span class="tt tt-lore" data-tt="بيوت الأزات الحية. (Azath)">الأزات</span> يَنشأُ بَبَساطَة، ويَتَجَمَّعُ مِن تِلْقاءِ نَفْسِه. مِمَّا يُثيرُ الشُّكوكَ في كُلِّ قانونٍ لِلسَّبَبِيَّةِ وضَعَهُ أجيالٌ مِنَ العُلَماءِ كَحَقِيقَةٍ لا تَقْبَلُ الجَدَل.</p>
+            <p>كانتِ الأراضي المُحِيطَةُ أقلَّ غُموضاً، وإن كانت أكثَرَ خُطورَةً بِكَثير. لَم يَكُن هُناكَ شَكٌّ في "<span class="tt tt-lore" data-tt="تلال قبور تحيط ببيوت الأزات، حيث يتم دفن وحبس الكيانات القوية لتظل في سبات أبدي. (Barrows)">الباروز</span>" [تِلالِ المَدافِن] المُحْدَوْدَبَةِ في السَّاحَةِ المَكْسُوَّةِ بِالأعشاب. أشجارٌ مَيِّتَة، مُتَقَرِّحَةٌ ومُتَقَزِّمَة، نَبَتَت هُنا وهُناك، أحياناً مِن أعْلى نُقْطَةٍ في التَّل، ولَكِن في أغْلَبِ الأحيانِ مِن جَوانِبِه. بَدأَ مَسارٌ مُتَعَرِّجٌ مِن بَلاطِ الرُّخامِ أمامَ البابِ الأمامِيّ، وتَمَيَّزَتِ البَوابةُ بِأعْمِدَةٍ خَشِنَةٍ مِن حَجَرٍ غَيرِ مَطْلِيٍّ بِالمِلاط، مُلْتَفَّةٍ حَولَها كُرومٌ وأغصان. أحاطَت بَقايا جِدارٍ مُنْخَفِضٍ بِالأرْض.</p>
+            <p>وَصَلَ <span class="tt tt-name" data-tt="Brys Beddict">بريس</span> إلى حافَّةِ السَّاحَةِ على طُولِ أحَدِ الجَوانِب، البَوابةُ عَن يَمِينِه، والبُرجُ عَن يَسارِه. ورأى على الفَوْرِ أنَّ الكَثيرَ مِنَ المَدافِنِ التي تَقَعُ في مَرمى بَصَرِهِ قَدِ انْهارَتْ في جانِبٍ واحِدٍ على الأقَلّ، وكأنَّ أحشاءَها قَد فُرِغَت مِنَ الدَّاخِل. كانتِ الأعشابُ الضارَّةُ التي تُغَطِّي التِّلالَ مَيِّتَة، ومُسْوَدَّةً كأنَّما أصابةها العَفَن.</p>
+            <p>دَرَسَ المَشْهَدَ لِلَحْظَةٍ أطْوَل، ثُمَّ شَقَّ طَرِيقَهُ حَولَ المُحِيطِ نَحوَ المَدْخَل. سارَ بَيْنَ الأعْمِدَة، إلى أوَّلِ بَلاطَةٍ رُخامِيَّة — والتي مالَتْ إلى أسفَلَ نَحوَ جانِبٍ واحِدٍ بِصَوتِ احتِكاكٍ مَعْدَنِيّ. تَرَنَّحَ <span class="tt tt-name" data-tt="Brys Beddict">بريس</span>، مادَّاً ذِراعَيْهِ لِتَوازُنِ نَفْسِه، وتَمَكَّنَ مِنَ التَّعافِي دونَ سُقوط.</p>
+            <p>تَعالَت ضَحكَةٌ حادَّةٌ مِن قُربِ مَدْخَلِ البُرج.</p>
+            <p>رَفَعَ نَظَرَه.</p>
+            <p>خَرَجَتِ الفَتاةُ مِنَ الظِّلِّ الذي يُلْقِيهِ البُرج. «أنا أعْرِفُك. لَقَد تَبِعْتُ الَّذينَ كانوا يَتْبَعونَك. وقَتَلْتُهُم.»</p>
+            <p>«ماذا حَدَثَ هُنا؟»</p>
+            <p>«أشياءٌ سَيِّئَة.» اقْتَرَبَت أكثَر، كانت رَثَّةَ الهَيْئَةِ وثِيابُها مُلَطَّخَةٌ بِالعَفَن. «هل أنتَ صَدِيقي؟ كانَ مِنَ المُفْتَرَضِ أن أُساعِدَهُ لِيَبْقى على قَيْدِ الحَياة. ولَكِنَّهُ ماتَ على أيِّ حال، والأشياءُ مَشغولَةٌ بِقَتْلِ بَعْضِها البَعْض. باستِثناءِ الشَّخْصِ الَّذي اختارَهُ البُرج. إنَّهُ يُريدُ التَّحَدُّثَ إلَيْك.»</p>
+            <p>«إلَيَّ أنا؟»</p>
+            <p>«إلى أحَدِ أصدِقائِي الكِبار.»</p>
+            <p>سألَ <span class="tt tt-name" data-tt="Brys Beddict">بريس</span>: «ومَن هُم أصْدِقاؤكِ الكِبارُ الآخَرون؟»</p>
+            <p>«الأُمُّ <span class="tt tt-name" data-tt="Shurq Elalle">شيرك</span>، الأبُ <span class="tt tt-name" data-tt="Tehol Beddict">تيهول</span>، العَمُّ <span class="tt tt-name" data-tt="Ublala Pung">أوبلالا</span>، العَمُّ <span class="tt tt-name" data-tt="Bugg">باق</span>.»</p>
+            <p>صَمَتَ <span class="tt tt-name" data-tt="Brys Beddict">بريس</span>. ثُمَّ قال: «ما اسمُكِ؟»</p>
+            <p>«<span class="tt tt-name" data-tt="Kettle">كيتل</span>.»</p>
+            <p>«<span class="tt tt-name" data-tt="Kettle">كيتل</span>، كَم شَخْصاً قَتَلْتِ في العامِ الماضي؟»</p>
+            <p>أمالَت رَأسَها. «لا أستَطِيعُ العَدَّ بَعْدَ الثَّمانِيَةِ والاثْنَيْن.»</p>
+            <p>«آه.»</p>
+            <p>«الكثيرُ مِنَ الثَّمانِيَةِ والاثْنَيْن.»</p>
+            <p>«وأيْنَ تَذهَبُ الجُثَث؟»</p>
+            <p>«أُحْضِرُها إلى هُنا وأدْفَعُها في الأرض.»</p>
+            <p>«كُلُّها؟»</p>
+            <p>أومَأَت بِرَأسِها.</p>
+            <p>«أينَ هو صَدِيقُكِ هذا؟ الَّذي يُريدُ التَّحَدُّثَ إلَيَّ؟»</p>
+            <p>«لا أعْرِفُ ما إذا كانَ صَدِيقاً. اتْبَعْنِي. خُطُّ حَيْثُ أخْطو.»</p>
+            <p>أمْسَكَت بِيَدِه، وصارَعَ <span class="tt tt-name" data-tt="Brys Beddict">بريس</span> لِكَبْتِ قَشْعَرِيرَةٍ مِن تِلكَ القَبْضَةِ البارِدَةِ الرَّطْبَة. خَرَجا عَنِ المَسارِ المُرَصَّف، بَينَ تِلالِ المَدافِن، والأرضُ تَتَحَرَّكُ بِشَكْلٍ غَيرِ مُسْتَقِرٍّ تَحتَ كُلِّ خُطْوَةٍ حَذِرَة. كانَ هُناكَ مَزيدٌ مِنَ الحَشَرات، ولَكِن مِن أنواعٍ أقلّ، وكأنَّ نَوْعاً مِنَ الاستِنْزافِ قَد حَدَثَ في أراضي <span class="tt tt-lore" data-tt="بيت الأزات الحي. (Azath)">الأزات</span>. قالَ <span class="tt tt-name" data-tt="Brys Beddict">بريس</span>: «لَم أسْبِق لي أن رَأيتُ حَشَراتٍ كَهَذِه مِن قَبْل. إنَّها... ضَخْمَة.»</p>
+            <p>قالَت <span class="tt tt-name" data-tt="Kettle">كيتل</span>: «قَدِيمَة، مِنَ العُصورِ الَّتي وُلِدَ فِيها البُرج. بَيْضٌ في الأرضِ المُتَصَدِّعَة. تِلكَ البُنِّيَّةُ الَّتي تُشْبِهُ العَصا ولَها رُؤوسٌ في كِلا الطَّرَفَيْنِ هي الأكثرُ شَرارَة. إنَّها تأكُلُ أصابِعَ قَدَمِي عندما أجْلِسُ ساكِنَةً لِفَترَةٍ طَوِيلَة. ومِنَ الصَّعْبِ سَحْقُها.»</p>
+            <p>«وماذا عَن تِلكَ الصَّفراءِ الشَّائِكَة؟»</p>
+            <p>«إنَّها لا تُزعِجُني. لا تأكُلُ إلا الطُّيورَ والفِئران. هُنا.»</p>
+            <p>تَوَقَّفَت أمامَ تَلٍّ مُنْهارٍ جَلَسَت فَوْقَهُ واحِدَةٌ مِن أكبَرِ الأشجارِ في السَّاحَة، كانَ خَشَبُها مُخَطَّطاً بِشَكْلٍ غَرِيبٍ بِاللَّوْنَيْنِ الرَّمادِيِّ والأسوَد، والأغصانُ والفُروعُ تَبرُزُ في مُنحَنَياتٍ بَدَلاً مِن زَوايا حادَّة. انْتَشَرَتِ الجُذورُ عَبْرَ المَدْفَنِ بِأكْمَلِه، وبَدا اللِّحاءُ المُتَبَقِّي مُقَشَّراً بِشَكْلٍ غَرِيب، مِثْلَ جِلْدِ الأُفْعوان.</p>
+            <p>قَطَّبَ <span class="tt tt-name" data-tt="Brys Beddict">بريس</span> جَبينَه. «وكَيْفَ لَنا أن نَتَحادَث، وهو سَجِينٌ هُناكَ وأنا هُنا في الأعلى؟»</p>
+            <p>«إنَّهُ مُحاصَر. يَقولُ إنَّ عَلَيْكَ إغماضَ عَيْنَيْكَ وألَّا تُفَكِّرَ في شَيء. مِثْلَما تَفْعَلُ عِندَما تُقاتِل، كَما يَقول.»</p>
+            <p>دُهِشَ <span class="tt tt-name" data-tt="Brys Beddict">بريس</span>. «هل يَتَحَدَّثُ إلَيْكِ الآن؟»</p>
+            <p>«نَعَم، ولَكِنَّهُ يَقولُ إنَّ هذا لَيْسَ كافِياً، لأنَّني لا أعْرِفُ ما يَكفي مِن... الكَلِمات. الكَلِماتِ والأشياء. يَجِبُ أن يُرِيَك. يَقولُ إنَّكَ فَعَلْتَ هذا مِن قَبْل.»</p>
+            <p>قالَ <span class="tt tt-name" data-tt="Brys Beddict">بريس</span>: «يَبدو أنَّني لَن أمْلِكَ أيَّ أسرار.»</p>
+            <p>«لَيْسَ الكَثير، لا، هَذا ما يَقولُه، لِذا يَقولُ إنَّهُ سَيَفْعَلُ الشَّيءَ نَفْسَهُ في المُقابِل. حَتَّى تَتَمَكَّنا مِنَ الثِّقَةِ بَبَعضِكُما البَعْض. نَوْعاً ما.»</p>
+            <p>«نَوْعاً ما. هل هَذِهِ كَلِمَتُه؟»</p>
+            <p>أومَأَت بِرَأسِها.</p>
+            <p>ابتَسَمَ <span class="tt tt-name" data-tt="Brys Beddict">بريس</span>. «حَسَناً، أنا أُقَدِّرُ صِدْقَه. طَيِّب، سأُجَرِّبُ هَذا.» أغْلَقَ عَيْنَيْه. ظَلَّت يَدُ <span class="tt tt-name" data-tt="Kettle">كيتل</span> البارِدَةُ في يَدِه، صَغِيرَة، ولَحْمُها مُرْتَخٍ بِشَكْلٍ غَرِيبٍ على العِظام. سَحَبَ أفكارَهُ بَعِيداً عَن ذلِكَ التَّفْصِيل. <span class="tt tt-phil" data-tt="يستكشف الكاتب هنا سيكولوجية المحارب في مالازان. الانفصال العاطفي ليس غياباً للمشاعر أو العقل، بل حالة من التركيز المطلق والبقاء في الحاضر ببرود، وهو ما يبرز الانضباط القاسي.">لَم يَكُن عَقلُ المُقاتِلِ في الحَقِيقَةِ فارِغاً أثناءَ القِتال؛ بَل كانَ، بَدَلاً مِن ذلِكَ، مُنْفَصِلاً بِبُرودٍ ومُنْتَبِهاً في آنٍ واحِد. تَرْكِيزٌ يُعَرِّفُهُ بِنَاءٌ يَجري تَرْكِيبُهُ بدَوْرِهِ بِمُوجِبِ قَوانِينَ صارِمَةٍ مِنَ الضَّرورَةِ العَمَلِيَّة. وهكذا، كانَ تَرْكِيزاً قائِماً على المُلاحَظَة، والحِساب، وخالِياً تَماماً مِنَ العاطِفَة، حتَّى مَع استِيقاظِ كُلِّ حاسَّة.</span></p>
+            <p>شَعَرَ بِنَفْسِهِ يَنْغَلِقُ داخِلَ ذلِكَ البِنَاءِ المَألوفِ والمُطَمْئِن.</p>
+            <p>وصُدِمَ بِقُوَّةِ الإرادَةِ الَّتي جَذَبَتْهُ بَعِيداً. صَارَعَ ضِدَّ ذُعْرٍ مُتَصاعِد، عالِماً أنَّهُ عاجِزٌ أمامَ مِثْلِ هَذِهِ القُوَّة. ثُمَّ استَسْلَم.</p>
+            <p>فَوْقَهُ، تَحَوَّلَتِ السَّماء. ضَوْءٌ أخضَرُ مُضْطَرِبٌ سَقِيمٌ يُحِيطُ بِجُرْحٍ أسوَدَ مُمَزَّقٍ كَبِيرٍ بِما يَكفي لِابْتِلاعِ قَمَر. تَلَوَّتِ الغُيوم، مُعَذَّبَةً ومَمْزوقَةً بِسَبَبِ هُبوطِ أشياءَ لا حَصْرَ لَها، وبَدا كُلُّ شَيءٍ وكأنَّهُ يُصارِعُ الهَواءَ وهو يَسقُط، وكأنَّ هذا العالَمَ كانَ يُقاوِمُ هذا التَّدَخُّلَ بِنَشاط. أشياءُ تَنْصَبُّ مِن ذلِكَ الجُرْح، تَحفُرُ طَرِيقَها عَبْرَ طَبَقاتِ السَّماء.</p>
+            <p>على المَشْهَدِ الطبيعيِّ أمامَهُ، كانت هُناكَ مَدِينَةٌ شاسِعَة، تَرْتَفِعُ مِن سَهْلٍ مُسْتَوٍ بِحَدائِقَ مُدَرَّجَةٍ ومَمَرَّاتٍ مُرْتَفِعَة. ارتَفَعَت مَجْموعَةٌ مِنَ الأبراجِ مِنَ الجانِبِ البَعِيد، واصِلَةً إلى ارتِفاعاتٍ غَيرِ عادِيَّة. امْتَدَّتِ الأراضي الزِّراعِيَّةُ مِن ضَواحِي المَدِينَةِ في كُلِّ اتِّجاهٍ بِقَدْرِ ما يَستَطِيعُ <span class="tt tt-name" data-tt="Brys Beddict">بريس</span> رؤيَتَه، وظِلالٌ غَرِيبَةٌ تَتَدَفَّقُ فَوْقَها بَيْنما يُراقِب.</p>
+            <p>سَحَبَ نَظَرَهُ عَنِ المَشْهَدِ ونَظَرَ إلى أسفَل، لِيَجِدَ أنَّهُ يَقِفُ على مَنَصَّةٍ مِنَ الحَجَرِ الجِيرِيِّ المُخَضَّبِ بِاللَّوْنِ الأحْمَر. أمامَهُ، جَرَت دَرَجاتٌ شَدِيدَةُ الانْحِدارِ نَحوَ الأسفَل، صَفَّاً تِلْوَ صَفّ، المِئاتُ مِنها، نَحوَ مِساحَةٍ مَرْصوفَةٍ تُحِيطُ بِها أعْمِدَةٌ مَطْلِيَّةٌ بِاللَّوْنِ الأزْرَق. كَشَفَت نَظرَةٌ إلى يَمِينِهِ عَن هُبوطٍ بِزاوِيَةٍ حادَّة. لَقَد كانَ على هَيْكَلٍ هَرَمِيِّ الشَّكْلِ ذي قِمَّةٍ مُسَطَّحَة، وأدْرَكَ بِذُعْرٍ أنَّ شَخْصاً ما يَقِفُ بِجانِبِه، عَن يَسارِه. شَكْلٌ بالكادِ مَرئِيّ، شَبَحِيّ، يَتَحَدَّى التَّفاصِيل. كانَ طَويلاً، وبَدا وكأنَّهُ يُحَدِّقُ في السَّماء، مُرَكِّزاً على ذلِكَ الجُرْحِ المُظلِمِ الرَّهِيب.</p>
+            <p>كانتِ الأشياءُ تَرتَطِمُ بِالأرضِ الآن، تَهْبِطُ بِقُوَّةٍ ولَكِن لَيْسَ بِالسُّرعَةِ الَّتي يَنْبَغي أن تَمْلِكَها. دَوى صَوتُ صَدْعٍ عالٍ مِنَ السَّاحَةِ بَينَ الأعْمِدَةِ في الأسفَل، ورأى <span class="tt tt-name" data-tt="Brys Beddict">بريس</span> أنَّ مَنْحوتَةً حَجَرِيَّةً ضَخْمَةً قَدِ استَقَرَّت هُناك. بَدا بَشَرِيَّاً غَرِيباً يُشْبِهُ الوَحْش، جَاثِماً بِأذْرُعٍ ذاتِ عَضَلاتٍ كَثِيفَةٍ تَصِلُ إلى الأمام، وتَلْتَقِي بِقَبْضَةٍ تَسْتَخْدِمُ كِلْتا اليَدَيْنِ على العُضْوِ الذَّكَرِيّ. صُنِعَتِ الأكتافُ والرَّأسُ على شَكْلِ ثَوْر. وهُناكَ مَجْموعَةٌ ثانِيَةٌ مِنَ الأرْجُل، أُنثَوِيَّة، تَلُفُّ خَصْرَ الرَّجُلِ الوَحْش، والمَنَصَّةُ الَّتي يَجْثو فَوْقَها مَنْحوتَةٌ — كَما يَرى <span class="tt tt-name" data-tt="Brys Beddict">بريس</span> الآن — على شَكْلِ امْرأة، مُسْتَلْقِيَةٍ على ظَهْرِها تَحْتَه. ومِن مَكانٍ قَرِيب، ارتَفَعَ صَوتُ قَعْقَعَةِ العَشَراتِ مِنَ الألواحِ الطِّينِيَّة — كانَت بَعِيدَةً جِدَّاً بِحَيْثُ لا يُمكِنُ لِـ <span class="tt tt-name" data-tt="Brys Beddict">بريس</span> رؤيَةُ ما إذا كانت هُناكَ كِتابَةٌ عَلَيْها، رَغْمَ أنَّهُ شَكَّ في ذلِكَ — وهي تَنْزَلِقُ وكأنَّها على وَسائِدَ مِنَ الهَواءِ قَبْلَ أن تَسْتَقِرَّ في مَساحَةٍ مُشَتَّتَة.</p>
+            <p>شَظايا مَبَانٍ — كُتَلٌ مِنَ الحَجَرِ الجِيرِيِّ المَنْحوت، أحجارُ زاوِيَة، جُدرانٌ مِنَ اللَّبِن، وأغصانٌ مَطْلِيَّةٌ بِالطِّين. ثُمَّ أطرافٌ مَقْطوعَة، وأجزاءٌ مِن مَاشِيَةٍ وخُيولٍ مُسْتَنْزَفَةِ الدِّماء، وقَطِيعٌ مِن شَيءٍ رُبَّما كانَ مَاعِزاً، لَقَد قُلِبَ كُلُّ واحِدٍ مِنها مِنَ الداخِلِ إلى الخارِج، وأمعاؤُهُ تَتَدَلَّى. بَشَرٌ ذوو بَشَرَةٍ داكِنَة — أو على الأقَلِّ أذْرُعُهُم وأرجُلُهُم وجُذوعُهُم.</p>
+            <p>في الأعلى، كانتِ السَّماءُ تَمْتَلِئُ بِشَظايا ضَخْمَةٍ شاحِبَة، تَهْبِطُ مِثْلَ الثَّلْج.</p>
+            <p>وشَيءٌ ضَخْمٌ كانَ يَمُرُّ عَبْرَ الجُرْح. مُحاطاً بِبَرْقٍ بَدا وكأنَّهُ يَصْرُخُ مِنَ الألم، صَرخاتٌ لا تَنْتَهِي، تُصِمُّ الآذان.</p>
+            <p>تَحَدَّثَت كَلِماتٌ ناعِمَةٌ في عَقلِ <span class="tt tt-name" data-tt="Brys Beddict">بريس</span>. «شَبَحِي، أُطْلِقَ لِيَهيمَ، رُبَّما، لِيَشْهَد. لَقَد حارَبوا ضِدَّ <span class="tt tt-lore" data-tt="الملك الأعلى الأسطوري. طاغية خالد دمر إمبراطوريته العظيمة وقتل الملايين من شعبه بدلاً من الاستسلام للآلهة القديمة. (Kallor)">كالور</span>؛ لَقَد كانت قَضِيَّةً جَدِيرَة. ولَكِن... ما فَعَلوهُ هُنا...»</p>
+            <p>لَم يَسْتَطِع <span class="tt tt-name" data-tt="Brys Beddict">بريس</span> سَحْبَ عَيْنَيْهِ عَن تِلكَ الكُرَةِ الصارِخَةِ مِنَ البَرْق. كانَ يُمكِنُهُ رؤيَةُ أطرافٍ داخِلَها، والأقواسُ المُتَوَهِّجَةُ مُلْتَفَّةٌ حَوْلَها مِثْلَ السَّلاسِل. «ما— ما هَذا؟»</p>
+            <p>«إلَهٌ يا <span class="tt tt-name" data-tt="Brys Beddict">بريس بيديكت</span>. في عالَمِهِ الخاصّ، كانَ مَحْبوساً في حَرْب. فَقَد كانت هُناكَ آلِهَةٌ مُنافِسَة. إغراءاتٌ...»</p>
+            <p>سألَ <span class="tt tt-name" data-tt="Brys Beddict">بريس</span>: «هل هَذِهِ رُؤيا مِنَ الماضي؟»</p>
+            <p>أجابَ الشَّخْص: «<span class="tt tt-phil" data-tt="فلسفة حول الزمن وتكرار أخطاء التاريخ في عالم مالازان. البشر يفضلون الجهل الطوعي ونسيان دورات العنف السابقة، لأن إدراكها الكامل سيؤدي إلى فقدان الأمل التام والجنون.">الماضي لا يَزالُ حَيَّاً. لا توجَدُ طَرِيقَةٌ لِلْمَعْرِفَة... ونَحنُ نَقِفُ هُنا. كَيْفَ نَقِيسُ البِدايَة، والنِّهايَة — بالنسبةِ لَنا جَمِيعاً، كانَ الأَمْسُ كاليَوْم، وكَما سَيَكونُ غَداً. نَحنُ لَسْنا مُدْرِكِين. أو رُبَّما نَحنُ كَذلِك، ومَع ذلِكَ نَخْتار — مِن أجلِ الرَّاحَة، ومِن أجلِ سَلامَةِ العَقْل — ألَّا نَرى. ألَّا نُفَكِّر.</span>» قَامَ بِإِيماءَةٍ غامِضَةٍ بِيَدٍ واحِدَة. «البَعْضُ يَقولونَ اثنا عَشَرَ ساحِراً، والبَعْضُ يَقولونَ سَبْعَة. لا يَهُم، فَهُم على وَشْكِ أن يُصْبِحوا هَباءً.»</p>
+            <p>كانتِ الكُرَةُ الضَّخْمَةُ تَزْأَرُ الآن، وتَنْمُو بِسُرعَةٍ مُخِيفَةٍ وهي تَهْوي نَحوَ الأرض. وأدْرَكَ <span class="tt tt-name" data-tt="Brys Beddict">بريس</span> أنَّها سَتَضْرِبُ المَدِينَة.</p>
+            <p>«<span class="tt tt-phil" data-tt="تحذير فلسفي من أن السعي المتعجرف للتحكم المطلق في المصير وتغيير النظام الطبيعي (عبر استدعاء إله غريب) يؤدي حتماً إلى تدمير الذات وانهيار الحضارات بأكملها.">وهَكذا، في جُهْدِهِم لِفَرْضِ تَغْيِيرٍ على المُخَطَّط، فإنَّهُم يُبِيدونَ أنفُسَهُم، وحَضارَتَهُم الخاصَّة.</span>»</p>
+            <p>«إذاً لَقَد فَشِلوا.»</p>
+            <p>لَم يَقُلِ الشَّخْصُ شَيئاً لِفَترَة.</p>
+            <p>واصطَدَمَ الإلَهُ الهابِط؛ وَمِيضٌ يُعْمِي الأبصار، انْفِجارٌ زَلْزَلَ الهَرَمَ تَحتَهُما وأرسَلَ شُقوقاً عَبْرَ السَّاحَةِ في الأسفَل. دُخانٌ، يَرْتَفِعُ في عَمودٍ ثُمَّ يَنْدَفِعُ نَحوَ الخارِج، مُبْتَلِعاً العالَمَ في الظِّلّ. انْدَفَعَتِ الرِّياحُ نَحوَ الخارِج في صَدْمَة، مُحَطِّمَةً الأشجارَ في الأراضي الزِّراعِيَّة، ومُسْقِطَةً الأعْمِدَةَ التي تُصَفُّ السَّاحَة. ثُمَّ انْدَلَعَتِ النِّيرانُ في الأشجار.</p>
+            <p>«استِجابَةً لِيَأْسٍ مَحْسوس، يُغَذِّيهِ غَضَبٌ مُتَأجِّج، استَدْعَوْا إلهاً. ومَاتوا مَع هذا الجُهْد. هل يَعنِي ذلِكَ أنَّهُم فَشِلوا في مُقامَرَتِهِم؟ لا، أنا لا أتَحَدَّثُ عَن <span class="tt tt-lore" data-tt="الطاغية الخالد. (Kallor)">كالور</span>. أنا أتَحَدَّثُ عَن عَجْزِهِم الَّذي أدى إلى نُشوءِ رَغْبَتِهِم في التَّغْيِير. <span class="tt tt-name" data-tt="Brys Beddict">بريس بيديكت</span>، لَوْ كانَت أشْباحُهُم تَقِفُ مَعَنا الآن، هُنا في عالَمِ المُستَقْبَلِ حَيْثُ تَقْبَعُ أجسادُنا، وبِالتَّالي قادِرَةً على رؤيَةِ ما صَنَعَهُ فِعْلُهُم، لَأَدْركوا أنَّ كُلَّ ما سَعَوْا إلَيْهِ قَد تَحَقَّق.</p>
+            <p>«إنَّ ذلِكَ الَّذي كانَ مُقَيَّداً في الأرضِ قَد حَرَّفَ جُدْرانَ سِجْنِه. بِيَدٍ لا يُمكِنُ التَّعَرُّفُ عَلَيْها. لَقَدِ انْتَشَرَ سُمُّهُ وأصابَ العالَمَ وكُلَّ مَن يَعِيشُ فَوْقَه.»</p>
+            <p>قالَ <span class="tt tt-name" data-tt="Brys Beddict">بريس</span>: «أنتَ تَتْرُكُني بِلا أمَل.»</p>
+            <p>«أنا آسِفٌ لِذلِك. <span class="tt tt-phil" data-tt="نقد لاذع لطبيعة السلطة والقيادة. القادة يستخدمون مفاهيم مثل 'الواجب' و'الطاعة' كأدوات للسيطرة، ويعتبرون التفكير النقدي أو التساؤل تهديداً مباشراً لنفوذهم.">لا تَبْحَثْ عَنِ الأمَلِ بَينَ قادَتِك. فَهُم مُسْتَوْدَعاتُ السُّمّ. اهتِمامُهُم بِكَ يَمْتَدُّ فَقَط بِقَدْرِ قُدرَتِهِم على التَّحَكُّمِ فِيك. ومِنْك، يَسْعَوْنَ لِلواجِبِ والطَّاعَة، وسَيُزَوِّدونَكَ بِلُغَةِ الإيمانِ المُؤَثِّرَة. إنَّهُم يَبْحَثونَ عَنِ الأتباع، والوَيْلُ لِمَن يَتَساءَل، أو يَرْفَعُ صَوتَ التَّحَدُِّي.</span></p>
+            <p>«<span class="tt tt-phil" data-tt="من أعمق النصوص السياسية في السلسلة: الطغيان لا ينجح بالقوة فقط، بل باستغلال خوف الشعوب. الجماهير الخائفة تتنازل عن حريتها طواعية مقابل وهم الأمان، مما يولد دائرة عنف يصبح فيها الضحايا طغاة جدد.">مِن حَضارَةٍ إلى أُخرى، الأمرُ نَفْسُه. يَسقُطُ العالَمُ في يَدِ الطُّغيانِ بِهَمْسَة. الخائِفونَ مُتَلَهِّفونَ دائِماً لِلانْحِناءِ أمامَ ضَرورَةٍ مَحْسوسَة، إيماناً مِنهُم بِأنَّ الضَّرورَةَ تَفْرِضُ الالتِزام، والالتِزامَ يُحَقِّقُ استِقْراراً مُعَيَّناً. في عالَمٍ مَصاغٍ على قَالَبِ الالتِزام، يَبْرُزُ المُعَرِضون، ويُوصَمونَ ويُتَعامَلُ مَعَهُم بِسُهولة. لا توجَدُ تَعَدُّدِيَّةٌ في المَنظورات، ولا حِوار. تَأخُذُ الضَّحِيَّةُ وَجْهَ الطَّاغِيَة، مُعْتَدَّةً بِنَفْسِها ومُتَصَلِّبَة، وتَتَوالَدُ الحُروبُ مِثْلَ الهَوامّ. ويَموتُ النَّاس.</span>»</p>
+            <p>دَرَسَ <span class="tt tt-name" data-tt="Brys Beddict">بريس</span> العاصِفَةَ النَّارِيَّةَ التي تَبْتَلِعُ ما كانَ يَوْماً مَدِينَةً ذاتَ جَمالٍ عظيم. لَم يَكُن يَعْرِفُ اسمَها، ولا الحَضارَةَ الَّتي أنْجَبَتْها، والآن خَطَرَ لَهُ أنَّ ذلِكَ لا يَهُم.</p>
+            <p>قالَ الشَّخْص: «في عالَمِك، تَقْتَرِبُ النُّبُوءَةُ مِن ذُرْوَتِها. سَيَبْرُزُ إمْبَراطور. أنتَ تَنْتَمِي إلى حَضارَةٍ تَرى الحَرْبَ امْتِداداً لِلاقْتِصاد. <span class="tt tt-phil" data-tt="نقد صريح للإمبراطوريات الرأسمالية (مثل ليذر) التي تبني ازدهارها الاقتصادي على استغلال وموت الآخرين، لدرجة أن هذا العنف الهيكلي يصبح جزءاً طبيعياً ومقبولاً من النظام.">تُصْبِحُ العِظامُ المُتَراصَّةُ أساساً لِطُرُقِ تِجارَتِك، ولا تَرى في ذلِكَ شَيْئاً غَيْرَ طَبِيعي</span>—»</p>
+            <p>«البَعْضُ مِنَّا يَفْعَل.»</p>
+            <p>«لا يَهُم. إرثُكَ مِنَ الثَّقافاتِ المَسحوقَةِ يَتَحَدَّثُ عَن حَقِيقَتِهِ الخاصَّة. أنتَ تَنْوي غَزْوَ <span class="tt tt-lore" data-tt="عرق أبناء الظل، محاربون يستخدمون سحر الظل ويواجهون إمبراطورية ليذر حالياً. (Tiste Edur)">التيست إيدور</span>. تَدَّعي أنَّ كُلَّ ظَرْفٍ مُختَلِف، وفَرِيد، ولَكِنَّهُ لَيْسَ مُختَلِفاً ولا فَرِيداً. إنَّهُ كُلُّهُ سَواء. قُوَّتُكَ العَسْكَرِيَّةُ تُثْبِتُ فَضِيلَةَ قَضِيَّتِك. ولَكِنَّني أقولُ لَكَ هذا يا <span class="tt tt-name" data-tt="Brys Beddict">بريس بيديكت</span>، لا يوجَدُ شَيءٌ اسمُهُ القَدَر. النَّصْرُ لَيْسَ حَتْمِيَّاً. عَدُوُّكَ يَقْبَعُ في الانْتِظار، في وَسَطِكُم. عَدُوُّكَ يَخْتَبِئُ دونَ حاجَةٍ لِتَنَكُّر، عندما يَكونُ العَداءُ والتَّهْدِيدُ الضِّمْنِيُّ كافِيَيْنِ لِجَعْلِ نَظَرَكَ يَشِيحُ بَعِيداً. إنَّهُ يَتَحَدَّثُ لُغَتَك، يأخُذُ كَلِماتِكَ ويَسْتَخْدِمُها ضِدَّك. إنَّهُ يَسْخَرُ مِن إيمانِكَ بِالحَقائِق، لأنَّهُ جَعَلَ نَفْسَهُ الحَكَمَ في تِلكَ الحَقائِق.»</p>
+            <p>«<span class="tt tt-lore" data-tt="إمبراطورية توسعية رأسمالية بحتة، تقيس الحياة والموت بالمال والديون. (Lether)">ليذر</span> لَيْسَت طُغْيانَاً—»</p>
+            <p>«أنتَ تَفْتَرِضُ أنَّ روحَ حَضارَتِكَ مُتَمَثِّلَةٌ في مَلِكِكَ الطَّيِّب. لَيْسَت كَذلِك. مَلِكُكَ مَوْجودٌ لأنَّهُ يُعْتَبَرُ مِنَ المَسْموحِ بِهِ أن يُوجَد. <span class="tt tt-phil" data-tt="يصور الجشع كنظام اقتصادي واجتماعي يدمر نفسه ذاتياً في النهاية؛ لأنه يستنزف كل الموارد والبشر حتى لا يتبقى شيء سوى المجاعة والانهيار.">أنتُم مَحكومونَ بِالجَشَع، طاغِيَةٍ وَحْشِيٍّ يَتَلَألأُ بِذَهَبِ المَجْد. لا يُمكِنُ هَزِيمَتُه، بَل فَقَط إبادتُه.</span>» أشارَ مَرَّةً أخرى نَحوَ الفَوْضَى النَّارِيَّةِ في الأسفَل. «<span class="tt tt-phil" data-tt="يصور الجشع كنظام يقتل نفسه.">هذا هو أمَلُكَ الوَحِيدُ في الخَلاصِ يا <span class="tt tt-name" data-tt="Brys Beddict">بريس بيديكت</span>. لأنَّ الجَشَعَ يَقْتُلُ نَفْسَه، عندما لا يَبْقى شَيءٌ لِادِّخارِه، عندما لا تَكونُ جُيوشُ العُمَّالِ الَّتي لا تُعَدُّ ولا تُحْصى سِوى عِظام، عندما يَنْكَشِفُ وَجْهُ المَجاعَةِ البَشِعُ في المِرآة.</span></p>
+            <p>«لَقَد سَقَطَ الإلَه. إنَّهُ يَجْثو الآن، يَبْذُرُ الدَّمار. صُعودٌ وهُبوط، صُعودٌ وهُبوط، ومَع كُلِّ تَجْدِيدٍ تَكونُ الروحُ المُرْشِدَةُ أقلّ، وأضعَف، ومُقَيَّدَةً بِشِدَّةٍ أكبَرَ بِرُؤيا مَحْرومَةٍ مِنَ الأمَل.»</p>
+            <p>«لِماذا يَفْعَلُ هذا الإلَهُ بِنَا هذا؟»</p>
+            <p>«لأنَّهُ لا يَعْرِفُ شَيْئاً سِوى الألم، ويَتوقُ فَقَط لِمُشارَكَتِه، لِيَصُبَّهُ على كُلِّ ما يَحْيى، وكُلِّ ما هو مَوْجود.»</p>
+            <p>«لِماذا أريْتَنِي هَذا؟»</p>
+            <p>«أجْعَلُكَ شاهِداً يا <span class="tt tt-name" data-tt="Brys Beddict">بريس بيديكت</span>، على رَمْزِ زَوالِكُم.»</p>
+            <p>«لِماذا؟»</p>
+            <p>صَمَتَ الشَّخْصُ لِلَحْظَة، ثُمَّ قال: «لَقَد نَصَحْتُكَ ألَّا تَبْحَثَ عَنِ الأمَلِ عِندَ قادَتِك، فَهُم لَن يُغَذُّوكَ إلا بِالأكاذِيب. ومَع ذلِكَ، فإنَّ الأمَلَ مَوْجود. ابْحَث عَنْهُ يا <span class="tt tt-name" data-tt="Brys Beddict">بريس بيديكت</span>، في الشَّخْصِ الَّذي يَقِفُ بِجانِبِك، في الغَرِيبِ الَّذي يَقِفُ على الجانِبِ الآخَرِ مِنَ الشَّارِع. كُن شُجاعاً بِما يَكفي لِتَسْعى لِعُبورِ ذلِكَ الشَّارِع. لا تَنْظُرْ لا نَحوَ السَّماءِ ولا نَحوَ الأرض. <span class="tt tt-phil" data-tt="الرسالة الأساسية لعالم مالازان بأكمله: في عالم مليء بالطغيان والآلهة القاسية والأنظمة المدمرة، يكمن الخلاص الحقيقي الوحيد في التعاطف الإنساني البسيط والقدرة على الشك ورفض المسلمات.">الأمَلُ يَسْتَمِرّ، وصَوْتُهُ هو التَّعاطُف، والشَّكُّ الصَّادِق.</span>»</p>
+            <p>بَدأَ المَشْهَدُ في التَّلاشِي.</p>
+            <p>تَحَدَّثَ الشَّخْصُ الَّذي بِجانِبِهِ لِلْمَرَّةِ الأخيرة. «هذا كُلُّ ما سَأقُولُهُ لَك. كُلُّ ما أستَطِيعُ قَوْلَه.»</p>
+
+            <div style="display:none;" id="word-count">الكلمات: 1332</div>
+            </div>
+    </div>
+
+    <div id="settings-overlay"></div>
+    <div id="settings-panel">
+        
+        <div class="settings-section">
+            <div class="settings-label">الخط</div>
+            <div class="font-grid">
+                <button class="font-btn active" data-font="Amiri" style="font-family: 'Amiri', serif;">Amiri</button>
+                <button class="font-btn" data-font="Noto Naskh Arabic" style="font-family: 'Noto Naskh Arabic', serif;">Noto Naskh</button>
+                <button class="font-btn" data-font="Cairo" style="font-family: 'Cairo', sans-serif;">Cairo</button>
+                <button class="font-btn" data-font="Tajawal" style="font-family: 'Tajawal', sans-serif;">Tajawal</button>
+            </div>
+        </div>
+
+        <hr class="settings-divider">
+
+        <div class="settings-section">
+            <div class="settings-label">حجم الخط</div>
+            <div class="slider-row">
+                <span class="slider-val" id="val-fs">٢٠</span>
+                <input type="range" id="slider-fs" min="14" max="28" step="1" value="20">
+            </div>
+        </div>
+
+        <hr class="settings-divider">
+
+        <div class="settings-section">
+            <div class="settings-label">المظهر</div>
+            <div class="theme-row">
+                <div class="swatch active" data-theme="cream" style="background: #f5f0e8;"></div>
+                <div class="swatch" data-theme="white" style="background: #ffffff;"></div>
+                <div class="swatch" data-theme="dark" style="background: #1e1e1e;"></div>
+                <div class="swatch" data-theme="amoled" style="background: #000000;"></div>
+            </div>
+        </div>
+
+        <hr class="settings-divider">
+
+        <div class="settings-section">
+            <div class="settings-label">تباعد الأسطر</div>
+            <div class="slider-row">
+                <span class="slider-val" id="val-lh">٢.٠</span>
+                <input type="range" id="slider-lh" min="1.6" max="2.4" step="0.1" value="2.0">
+            </div>
+        </div>
+
+        <hr class="settings-divider">
+
+        <div class="settings-section">
+            <div class="settings-label">التعليقات التوضيحية</div>
+            
+            <div class="toggle-row">
+                <span>الأسماء</span>
+                <div class="toggle-switch" data-toggle="name">
+                    <div class="toggle-thumb"></div>
+                </div>
+            </div>
+            
+            <div class="toggle-row">
+                <span>عالم مالازان</span>
+                <div class="toggle-switch" data-toggle="lore">
+                    <div class="toggle-thumb"></div>
+                </div>
+            </div>
+            
+            <div class="toggle-row">
+                <span>الفلسفة والمعاني</span>
+                <div class="toggle-switch" data-toggle="phil">
+                    <div class="toggle-thumb"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <button id="scroll-top" aria-label="Scroll to top">
+        <svg viewBox="0 0 24 24"><path d="M12 4l-8 8h6v8h4v-8h6z"/></svg>
+    </button>
+
+    <div id="global-tooltip">
+        <div class="tt-close-btn">×</div>
+        <div id="global-tooltip-content"></div>
+    </div>
+
+    <div id="toast"></div>
+
+    <script>
+        // State
+        const state = {
+            font: 'Amiri',
+            fontSize: 20,
+            lineHeight: 2.0,
+            theme: 'cream',
+            toggles: { name: true, lore: true, phil: true }
+        };
+
+        // DOM Elements
+        const docEl = document.documentElement;
+        const body = document.body;
+        const btnSettings = document.getElementById('btn-settings');
+        const overlay = document.getElementById('settings-overlay');
+        const panel = document.getElementById('settings-panel');
+        const progressBar = document.getElementById('progress-bar');
+        const btnScrollTop = document.getElementById('scroll-top');
+        const tooltip = document.getElementById('global-tooltip');
+        const tooltipContent = document.getElementById('global-tooltip-content');
+        const toastEl = document.getElementById('toast');
+
+        // Number conversion
+        const toArabicNumerals = (str) => {
+            return str.toString().replace(/[0-9]/g, c => String.fromCharCode(c.charCodeAt(0) + 1584));
+        };
+
+        // --- Settings Logic ---
+        
+        // Font
+        document.querySelectorAll('.font-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.font-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                state.font = btn.getAttribute('data-font');
+                docEl.style.setProperty('--font-family', `'${state.font}', ${state.font === 'Amiri' || state.font === 'Noto Naskh Arabic' ? 'serif' : 'sans-serif'}`);
+                showToast(`الخط: ${btn.textContent}`);
+            });
+        });
+
+        // Font Size
+        const sliderFs = document.getElementById('slider-fs');
+        const valFs = document.getElementById('val-fs');
+        sliderFs.addEventListener('input', (e) => {
+            state.fontSize = e.target.value;
+            valFs.textContent = toArabicNumerals(state.fontSize);
+            docEl.style.setProperty('--font-size', `${state.fontSize}px`);
+        });
+
+        // Line Height
+        const sliderLh = document.getElementById('slider-lh');
+        const valLh = document.getElementById('val-lh');
+        sliderLh.addEventListener('input', (e) => {
+            state.lineHeight = parseFloat(e.target.value).toFixed(1);
+            valLh.textContent = toArabicNumerals(state.lineHeight);
+            docEl.style.setProperty('--line-height', state.lineHeight);
+        });
+
+        // Themes
+        const swatches = document.querySelectorAll('.swatch');
+        swatches.forEach(swatch => {
+            swatch.addEventListener('click', () => {
+                swatches.forEach(s => s.classList.remove('active'));
+                swatch.classList.add('active');
+                state.theme = swatch.getAttribute('data-theme');
+                body.setAttribute('data-theme', state.theme);
+                showToast(`المظهر: ${state.theme}`);
+            });
+        });
+
+        // Toggles
+        document.querySelectorAll('.toggle-switch').forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const type = toggle.getAttribute('data-toggle');
+                toggle.classList.toggle('off');
+                state.toggles[type] = !toggle.classList.contains('off');
+                if (state.toggles[type]) {
+                    body.classList.remove(`hide-${type}`);
+                } else {
+                    body.classList.add(`hide-${type}`);
+                }
+            });
+        });
+
+        // Panel open/close
+        const togglePanel = () => {
+            const isShowing = panel.classList.contains('show');
+            if (isShowing) {
+                panel.classList.remove('show');
+                overlay.classList.remove('show');
+            } else {
+                panel.classList.add('show');
+                overlay.classList.add('show');
+            }
+        };
+        btnSettings.addEventListener('click', togglePanel);
+        overlay.addEventListener('click', togglePanel);
+
+        // --- Scroll Logic ---
+        let isScrolling = false;
+        window.addEventListener('scroll', () => {
+            if (!isScrolling) {
+                window.requestAnimationFrame(() => {
+                    // Progress bar
+                    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+                    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                    const scrolled = (scrollTop / scrollHeight) * 100;
+                    progressBar.style.width = scrolled + '%';
+
+                    // Scroll to top button
+                    if (scrollTop > 400) {
+                        btnScrollTop.classList.add('visible');
+                    } else {
+                        btnScrollTop.classList.remove('visible');
+                    }
+                    
+                    isScrolling = false;
+                });
+                isScrolling = true;
+            }
+        });
+
+        btnScrollTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // --- Tooltips Logic ---
+        let tooltipTimeout;
+        let activeEl = null;
+
+        const showTT = (target) => {
+            if(activeEl === target) return;
+            activeEl = target;
+            
+            const text = target.getAttribute('data-tt');
+            tooltipContent.textContent = text;
+            
+            tooltip.className = ''; // reset classes
+            if (target.classList.contains('tt-name')) tooltip.classList.add('type-name');
+            if (target.classList.contains('tt-lore')) tooltip.classList.add('type-lore');
+            if (target.classList.contains('tt-phil')) tooltip.classList.add('type-phil');
+
+            const rect = target.getBoundingClientRect();
+            
+            // Temporary show to get dimensions
+            tooltip.style.display = 'block';
+            tooltip.classList.add('show');
+            const ttRect = tooltip.getBoundingClientRect();
+            
+            let topPos = rect.top + window.scrollY - ttRect.height - 10;
+            let leftPos = rect.left + window.scrollX + (rect.width / 2) - (ttRect.width / 2);
+            
+            tooltip.classList.add('pos-top');
+            
+            // Flip to bottom if not enough space
+            if (rect.top - ttRect.height - 10 < 0) {
+                topPos = rect.bottom + window.scrollY + 10;
+                tooltip.classList.remove('pos-top');
+                tooltip.classList.add('pos-bottom');
+            }
+
+            // Screen edge collision
+            if (leftPos < 10) leftPos = 10;
+            if (leftPos + ttRect.width > window.innerWidth - 10) {
+                leftPos = window.innerWidth - ttRect.width - 10;
+            }
+
+            tooltip.style.top = `${topPos}px`;
+            tooltip.style.left = `${leftPos}px`;
+        };
+
+        const hideTT = () => {
+            tooltip.classList.remove('show');
+            activeEl = null;
+        };
+
+        document.addEventListener('mouseover', (e) => {
+            const target = e.target.closest('.tt');
+            if (!target) return;
+            if (window.innerWidth < 768) return; // handled by click on mobile
+            clearTimeout(tooltipTimeout);
+            showTT(target);
+        });
+
+        document.addEventListener('mouseout', (e) => {
+            const target = e.target.closest('.tt');
+            if (!target) return;
+            if (window.innerWidth < 768) return;
+            tooltipTimeout = setTimeout(hideTT, 150);
+        });
+
+        // Mobile tap & close button logic
+        document.addEventListener('click', (e) => {
+            const target = e.target.closest('.tt');
+            const closeBtn = e.target.closest('.tt-close-btn');
+            
+            if (closeBtn) {
+                hideTT();
+                return;
+            }
+            
+            if (target && window.innerWidth < 768) {
+                e.preventDefault();
+                showTT(target);
+                return;
+            }
+            
+            // Click outside dismiss
+            if (window.innerWidth < 768 && !e.target.closest('#global-tooltip') && !target) {
+                hideTT();
+            }
+        });
+        
+        // Prevent tooltip from disappearing when hovering over it
+        tooltip.addEventListener('mouseenter', () => clearTimeout(tooltipTimeout));
+        tooltip.addEventListener('mouseleave', () => {
+            if (window.innerWidth >= 768) tooltipTimeout = setTimeout(hideTT, 150);
+        });
+
+        // --- Keyboard Shortcuts ---
+        let toastTimeout;
+        const showToast = (msg) => {
+            toastEl.textContent = msg;
+            toastEl.classList.add('show');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => toastEl.classList.remove('show'), 1500);
+        };
+
+        window.addEventListener('keydown', (e) => {
+            // Ignore if in inputs (none here, but good practice)
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+            if (e.key === '+' || e.key === '=') {
+                if (state.fontSize < 28) {
+                    sliderFs.value = ++state.fontSize;
+                    sliderFs.dispatchEvent(new Event('input'));
+                    showToast(`حجم الخط: ${toArabicNumerals(state.fontSize)}`);
+                }
+            } else if (e.key === '-') {
+                if (state.fontSize > 14) {
+                    sliderFs.value = --state.fontSize;
+                    sliderFs.dispatchEvent(new Event('input'));
+                    showToast(`حجم الخط: ${toArabicNumerals(state.fontSize)}`);
+                }
+            } else if (e.key.toLowerCase() === 't') {
+                const themes = ['cream', 'white', 'dark', 'amoled'];
+                let idx = themes.indexOf(state.theme);
+                idx = (idx + 1) % themes.length;
+                swatches[idx].click();
+            } else if (e.key.toLowerCase() === 's') {
+                togglePanel();
+            } else if (e.key === 'Escape') {
+                if (panel.classList.contains('show')) togglePanel();
+                hideTT();
+            } else if (e.key === 'Home') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+
+    </script>
+</body>
+</html>
